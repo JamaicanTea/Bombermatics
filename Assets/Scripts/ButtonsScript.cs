@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class ButtonsScript : MonoBehaviour {
 	public GameObject gameOver;
 	public GameObject resetButton;
+	public GameObject youWin;
 
 	// Use this for initialization
+	public void PlayGame()
+	{
+		SceneManager.LoadScene ("GameScene1");
+	}
 	public void RightAnswer () 
 	{
 		SceneManager.LoadScene ("GameScene2");	
@@ -23,7 +28,9 @@ public class ButtonsScript : MonoBehaviour {
 	}
 	public void RightAnswer4 () 
 	{
-		SceneManager.LoadScene ("GameScene2");	
+		Time.timeScale = 0;
+		youWin.gameObject.SetActive (true);
+		resetButton.gameObject.SetActive (true);
 	}
 	// Update is called once per frame
 	public void GameOver () 
@@ -31,5 +38,9 @@ public class ButtonsScript : MonoBehaviour {
 		Time.timeScale = 0;
 		gameOver.gameObject.SetActive (true);
 		resetButton.gameObject.SetActive (true);
+	}
+	public void MainMenu()
+	{
+		SceneManager.LoadScene ("MainMenu");
 	}
 }
